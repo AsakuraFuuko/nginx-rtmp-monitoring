@@ -6,7 +6,7 @@ var config = require('./config.json');
 var language = require('./language/'+config.language+'.json');
 var app = express();
 app.use(express.static('public'));
-var server = app.listen(config.http_server_port);
+var server = app.listen(config.http_server_port, config.http_server_name);
 var io = require('socket.io').listen(server);
 var os = require("os");
 var swig = require('swig');
@@ -66,6 +66,7 @@ app.get('/',auth,function(req,res){
         language: language,
         version:config.version,
         stream_server:config.rtmp_server_stream_url,
+        stream_type:config.rtmp_server_stream_type,
         control_server:config.rtmp_server_control_url
    });
 });
