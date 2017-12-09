@@ -31,10 +31,10 @@ app.use(session({
 }));
 
 var auth = function(req, res, next) {
-  if (req.session && req.session.user === "fstn" && req.session.admin)
+  // if (req.session && req.session.user === "fstn" && req.session.admin)
     return next();
-  else
-    return res.sendStatus(401);
+  // else
+  //   return res.sendStatus(401);
 };
 
 app.get('/logout', function (req, res) {
