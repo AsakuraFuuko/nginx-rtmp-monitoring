@@ -1,0 +1,12 @@
+#player {
+    height: calc(100vh - 120px);
+}
+
+#player-panel {
+    margin-top: 10px;
+}
+
+#PlayStream {
+    display: block;
+    margin: 0 auto;
+}

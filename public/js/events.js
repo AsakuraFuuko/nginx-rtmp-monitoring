@@ -18,14 +18,30 @@ function playStreamEvent() {
     $player.ready(function () {
         var myPlayer = this;
         var aspectRatio = 9 / 16;
-        var width = $('#' + myPlayer.id()).parent().width();
-        myPlayer.width(width);
-        myPlayer.height(width * aspectRatio);
-        window.onresize = function () {
-            var width = $('#' + myPlayer.id()).parent().width();
+        var player = $('#' + myPlayer.id());
+        var width = player.parent().width();
+        var height = player.parent().height();
+        if (width * aspectRatio <= height) {
             myPlayer.width(width);
             myPlayer.height(width * aspectRatio);
+        } else {
+            myPlayer.height(height);
+            myPlayer.width(height * (1 / aspectRatio))
+        }
+
+        window.onresize = function () {
+            var player = $('#' + myPlayer.id());
+            var width = player.parent().width();
+            var height = player.parent().height();
+            if (width * aspectRatio <= height) {
+                myPlayer.width(width);
+                myPlayer.height(width * aspectRatio);
+            } else {
+                myPlayer.height(height);
+                myPlayer.width(height * (1 / aspectRatio))
+            }
         };
+
         $player.pause();
         $player.load();
     });

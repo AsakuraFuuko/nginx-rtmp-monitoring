@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css" media="screen">
     <link rel="stylesheet" href="/css/video-js.min.css">
     <link rel="stylesheet" href="/css/custom.min.css">
+    <link rel="stylesheet" href="/css/player.css">
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
@@ -27,8 +28,8 @@
 <input type="hidden" value="{{channel_name}}" id="stream_name">
 
 <div class="container">
-    <div class="panel panel-default">
-        <div class="panel-body">
+    <div class="panel panel-default" id="player-panel">
+        <div class="panel-body" id="player-panel-body">
             <div id="player"></div>
         </div>
     </div>
