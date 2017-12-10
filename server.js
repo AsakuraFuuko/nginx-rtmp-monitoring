@@ -149,16 +149,18 @@ setInterval(function () {
             } else {
                 var rtmp = result.rtmp;
                 var streams = rtmp.server[0].application[0].live[0].stream;
-                for (var index = 0; index < streams.length; index++) {
-                    var view = views[streams[index].name];
-                    if (!!view) {
-                        streams[index].nclients = [Object.keys(view.sessions).length.toString()];
-                    } else {
-                        streams[index].nclients = ["0"]
+                if (streams) {
+                    for (var index = 0; index < streams.length; index++) {
+                        var view = views[streams[index].name];
+                        if (!!view) {
+                            streams[index].nclients = [Object.keys(view.sessions).length.toString()];
+                        } else {
+                            streams[index].nclients = ["0"]
+                        }
+                        streams[index].client = []
                     }
-                    streams[index].client = []
+                    rtmp.server[0].application[0].live[0].stream = streams;
                 }
-                rtmp.server[0].application[0].live[0].stream = streams;
                 io.emit('statistics', rtmp);
             }
 
