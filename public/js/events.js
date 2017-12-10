@@ -1,37 +1,36 @@
 function playStreamEvent() {
-
     var $player;
+    var stream_name = $("#stream_name").val();
 
-    $(".play_stream").click(function () {
+    var stream_server = $("#stream_server").val();
+    var stream_type = $("#stream_type").val();
 
-        var stream_name = $(this).attr('data-stream-name');
+    $("#player").html('<video id="PlayStream" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="560px" height="330px" data-setup="{}"> <p class="vjs-no-js">To view this video please enable JavaScript</p> </video>');
 
-        var stream_server = $("#stream_server").val();
-        var stream_type = $("#stream_type").val();
+    $player = videojs("PlayStream");
 
-        $("#player").html('<video id="PlayStream" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="560px" height="330px" data-setup="{}"> <p class="vjs-no-js">To view this video please enable JavaScript</p> </video>');
-
-        $player = videojs("PlayStream");
-
-        $player.src({
-            src: stream_server.replace('{{name}}', stream_name),
-            type: stream_type,
-            withCredentials: true
-        });
-
-        $player.ready(function () {
-            $player.pause();
-            $player.load();
-        });
-
-        $("#channel_name").html(stream_name);
-
+    $player.src({
+        src: stream_server.replace('{{name}}', stream_name),
+        type: stream_type
+        // withCredentials: true
     });
 
-    $('#stream_popup').on('hidden.bs.modal', function () {
-        //bad hack to fix my issue with video js reloading
-        location.reload();
-    })
+    $player.ready(function () {
+        var myPlayer = this;
+        var aspectRatio = 9 / 16;
+        var width = $('#' + myPlayer.id()).parent().width();
+        myPlayer.width(width);
+        myPlayer.height(width * aspectRatio);
+        window.onresize = function () {
+            var width = $('#' + myPlayer.id()).parent().width();
+            myPlayer.width(width);
+            myPlayer.height(width * aspectRatio);
+        };
+        $player.pause();
+        $player.load();
+    });
 
-
+    $("#channel_name").html(stream_name);
 }
+
+playStreamEvent();

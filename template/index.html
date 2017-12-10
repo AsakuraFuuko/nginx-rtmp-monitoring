@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="/css/video-js.min.css">
+    <link rel="stylesheet" href="/css/custom.min.css">
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">{{title}}</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse navbar-right collapse">
+            <a class="navbar-brand" id="uptime"></a>
+            <div id="show_live"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-center"><i class='glyphicon glyphicon-signal' style='color: #73afff;'></i>
+                <span class="hidden-xs hidden-sm">{{language.live_streams}}</span>
+            </th>
+            <th class="text-center"><i class='glyphicon glyphicon-facetime-video' style='color: #73afff;'></i>
+                <span class="hidden-xs hidden-sm">{{language.resolution}}</span>
+            </th>
+            <th class="text-center"><i class='glyphicon glyphicon-user' style='color: #73afff;'></i>
+                <span class="hidden-xs hidden-sm">{{language.viewers}}</span>
+            </th>
+            <th class="text-center hidden-xs hidden-sm"><i class='glyphicon glyphicon-time' style='color: #73afff;'></i>
+                <span class="hidden-xs hidden-sm">{{language.time}}</span>
+            </th>
+            <th class="text-center"><i class='glyphicon glyphicon-time' style='color: #73afff;'></i>
+                <span class="hidden-xs hidden-sm">{{language.play}}</span>
+            </th>
+        </tr>
+        </thead>
+        <tbody id="live_stream">
+
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well text-center" style="padding-top: 10px;margin-top: 20px;">
+                <p class="text-muted">Powered by <a href="http://www.fiftysoft.com/">fstv monitoring {{version}}</a> <i
+                        class="glyphicon glyphicon-stats" style='color: #73afff;'></i></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="{{language.play}}" id="language_play">
+
+
+<script src="/js/jquery.js"></script>
+<script src="/js/library/numeral.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/confirm-bootstrap.js"></script>
+<script src="/js/socket.js"></script>
+<script src="/js/message.js"></script>
+<script src="/js/helper.js"></script>
+<script src="/js/model.js"></script>
+<script src="/js/core.js"></script>
+</body>
+</html>
