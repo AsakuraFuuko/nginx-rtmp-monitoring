@@ -62,6 +62,9 @@ function setLiveStream(data) {
 
     });
 
+    if (!table) {
+        table = "<tr><td colspan='10'>no streams</td></tr>";
+    }
 
     $("#live_stream").html(table);
 

@@ -151,7 +151,7 @@ setInterval(function () {
                 var streams = rtmp.server[0].application[0].live[0].stream;
                 if (streams) {
                     for (var index = 0; index < streams.length; index++) {
-                        var view = views[streams[index].name];
+                        var view = views[streams[index].name[0]];
                         if (!!view) {
                             streams[index].nclients = [Object.keys(view.sessions).length.toString()];
                         } else {

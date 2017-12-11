@@ -15,6 +15,8 @@ function setLiveStream(data) {
         var play = "<td class='text-center'><a class='btn btn-default play_stream' href='player/" + channel.name[0] + "'><i class='glyphicon glyphicon-play'></i> <span class='hidden-xs'>" + language_play + "</span></a></td>";
         table = table + "<tr>" + name + resolution + viewers + time + play + "</tr>";
     });
-
+    if (!table) {
+        table = "<tr><td colspan='5'>no streams</td></tr>";
+    }
     $("#live_stream").html(table);
 }

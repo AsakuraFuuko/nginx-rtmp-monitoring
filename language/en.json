@@ -17,6 +17,7 @@
   "time":"Time",
   "play":"Play",
   "drop":"Drop",
-  "playing":"Playing",
+  "playing":"is Playing",
+  "offline":"is Offline",
   "close":"Close"
 }
