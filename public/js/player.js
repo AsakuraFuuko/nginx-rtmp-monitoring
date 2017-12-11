@@ -18,19 +18,19 @@ socket.on('views', function (views) {
 });
 
 socket.on('statistics', function (statistics) {
+    var status = false;
     var streams = statistics.server[0].application[0].live[0].stream;
     if (streams) {
-        var status = false;
         for (var index = 0; index < streams.length; index++) {
             if (streams[index].name[0] === stream_name) {
                 status = true;
             }
         }
-        var title_str = title_temp.replace('%status%', status ? playing : offline);
-        title.text(title_str);
-        nav_title.html(title_str);
-        status ? player_panel.show() : player_panel.hide()
     }
+    var title_str = title_temp.replace('%status%', status ? playing : offline);
+    title.text(title_str);
+    nav_title.html(title_str);
+    status ? player_panel.show() : player_panel.hide()
 });
 
 function getToken() {
