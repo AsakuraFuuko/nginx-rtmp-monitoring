@@ -7,6 +7,7 @@ var offline = $("#offline").val();
 var title = $("title");
 var nav_title = $("#nav-title");
 var player_panel = $("#player-panel");
+var is_playing = false;
 
 socket.on('views', function (views) {
     var stream_name = $("#stream_name").val();
@@ -30,7 +31,16 @@ socket.on('statistics', function (statistics) {
     var title_str = title_temp.replace('%status%', status ? playing : offline);
     title.text(title_str);
     nav_title.html(title_str);
-    status ? player_panel.show() : player_panel.hide()
+    if (status) {
+        player_panel.show();
+        if (!is_playing) {
+            is_playing = true;
+            playStreamEvent()
+        }
+    } else {
+        is_playing = false;
+        player_panel.hide()
+    }
 });
 
 function getToken() {
