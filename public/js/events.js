@@ -41,6 +41,7 @@ function playStreamEvent() {
 
         $player.pause();
         $player.load();
+        $player.play();
     });
 
     $("#channel_name").html(stream_name);
